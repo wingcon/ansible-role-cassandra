@@ -19,3 +19,4 @@ cassandra_log_path: /wsp_var/log/cassandra
 cassandra_env_configuration:
   - name: CASSANDRA_LOG_DIR
     value:  "{{ cassandra_log_path }}"
+cassandra_join_cluster: false
