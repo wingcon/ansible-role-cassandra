@@ -5,9 +5,7 @@
   when: cassandra_configure_apache_repo|bool
 
 - name: Get current node count
-  shell: |
-    set -o pipefail
-    nodetool status | awk '/^(U|D)(N|L|J|M)/{print $2}' | wc -l
+  shell: "nodetool status | awk '/^(U|D)(N|L|J|M)/{print $2}' | wc -l"
   register: nodetool_output
   changed_when: false
   check_mode: no
