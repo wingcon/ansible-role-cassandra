@@ -76,7 +76,7 @@
     - name: Install Debian Packages
       apt:
         name: "{{ packages[instance_key] }}"
-        update_cache: yes
+        update_cache: true
       register: pkgstatus
       until: pkgstatus is succeeded
       when: ansible_os_family == 'Debian'
@@ -103,7 +103,7 @@
     - name: Debian 10 Install Zulu Java
       apt:
         name: "zulu-8"
-        update_cache: yes
+        update_cache: true
       register: pkgstatus
       until: pkgstatus is succeeded
       when:

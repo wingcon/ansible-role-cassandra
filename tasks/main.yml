@@ -8,7 +8,7 @@
   shell: "nodetool status | awk '/^(U|D)(N|L|J|M)/{print $2}' | wc -l"
   register: nodetool_output
   changed_when: false
-  check_mode: no
+  check_mode: false
 
 - name: Store current node count
   set_fact:
@@ -116,7 +116,7 @@
   # this task gets to be executed.
   yum:
     name: "{{ cassandra_package }}"
-    update_cache: yes
+    update_cache: true
   delay: "{{ cassandra_task_delay }}"
   retries: "{{ cassandra_task_retries }}"
   register: cassandra_yum_install_result
@@ -231,7 +231,7 @@
   systemd:
     name: cassandra
     enabled: "{{ cassandra_service_enabled }}"
-    daemon_reload: yes
+    daemon_reload: true
     state: "{{ cassandra_service_state }}"
   when:
     - not ansible_check_mode
