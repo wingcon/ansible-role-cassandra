@@ -2,7 +2,7 @@
 - name: Create Custom Directory
   file:
     group: "{{ cassandra_directories[cassandra_directory_set].group | default('cassandra') }}"
-    mode: "{{ cassandra_directories[cassandra_directory_set].mode | default(0700) }}"
+    mode: "{{ cassandra_directories[cassandra_directory_set].mode | default(o700) }}"
     owner: "{{ cassandra_directories[cassandra_directory_set].owner | default('cassandra') }}"
     path: "{{ item }}"
     state: directory
